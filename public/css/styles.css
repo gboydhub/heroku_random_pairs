@@ -37,6 +37,8 @@ table
 .txtbox
 {
   width: 7rem;
+  margin-right: 0.2rem;
+  margin-bottom: 0.2rem;
 }
 
 .errormsg
