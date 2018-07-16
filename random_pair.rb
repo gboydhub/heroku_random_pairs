@@ -23,9 +23,17 @@ def random_pair(name_array)
   firstnames.reject! {|i| i.nil? || i == ''}
   lastnames.reject! {|i| i.nil? || i == ''}
 
+  if firstnames.length == 1 && lastnames.length == 0
+    return [firstnames]
+  end
   # Generate split namelist
   lastnames.each_with_index do |v, i|
     namelist << [firstnames[i], v]
+  end
+
+  easter_egg = firstnames.index("Teecee")
+  if easter_egg
+    firstnames[easter_egg] = "Teecee <3"
   end
 
   ln_counter = lastnames.length
@@ -34,9 +42,10 @@ def random_pair(name_array)
       namelist << [firstnames[ln_counter], firstnames[ln_counter+1]]
       ln_counter += 2
     else
-      namelist << [firstnames[ln_counter]]
+      namelist.last << firstnames.last
       ln_counter += 1
     end
+    p ln_counter
   end
 
   namelist
